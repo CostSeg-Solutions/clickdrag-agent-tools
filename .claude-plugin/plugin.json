@@ -1,0 +1,29 @@
+{
+  "name": "clickdrag-cost-segregation",
+  "version": "2.3.0",
+  "description": "Cost segregation estimates, fees, allocation planning bands, provider facts and consult requests for US property.",
+  "author": {
+    "name": "ClickDrag Finance",
+    "email": "howard@clickdragfinance.com",
+    "url": "https://www.clickdragfinance.com"
+  },
+  "homepage": "https://www.clickdragfinance.com/developers",
+  "license": "MIT",
+  "keywords": [
+    "cost segregation",
+    "depreciation",
+    "bonus depreciation",
+    "opportunity zone",
+    "real estate tax",
+    "MACRS",
+    "section 168",
+    "tax"
+  ],
+  "privacyPolicyUrl": "https://www.clickdragfinance.com/privacy",
+  "mcpServers": {
+    "clickdrag": {
+      "type": "http",
+      "url": "https://www.clickdragfinance.com/api/mcp"
+    }
+  }
+}

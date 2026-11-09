@@ -1,0 +1,110 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "clickdrag-cost-segregation",
+  "version": "2.3.0",
+  "description": "Cost segregation estimates, fees, allocation planning bands, provider facts and consult requests for US property.",
+  "author": {
+    "name": "ClickDrag Finance",
+    "email": "howard@clickdragfinance.com",
+    "url": "https://www.clickdragfinance.com"
+  },
+  "homepage": "https://www.clickdragfinance.com/developers",
+  "license": "MIT",
+  "keywords": [
+    "cost segregation",
+    "depreciation",
+    "bonus depreciation",
+    "opportunity zone",
+    "real estate tax",
+    "MACRS",
+    "section 168",
+    "tax"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "ClickDrag Cost Segregation",
+        "shortDescription": "Cost segregation estimates",
+        "longDescription": "Cost segregation estimates, fees, allocation planning bands, provider facts and consult requests for US property.\n\n5 tools. To look up (no side effects): Estimate a cost segregation study for one property; Get cost segregation workpaper and study prices; Get cost segregation allocation planning bands by property type; Get ClickDrag Finance provider facts for vendor comparison.\n\nTo send details: Book a cost segregation consult. It records a lead and emails the ClickDrag Finance team, so an assistant should call it only when the person has asked to speak to someone.\n\nNothing returned is tax advice, and no estimate is a completed study. No study can be bought through these tools: there is no payment tool.",
+        "developerName": "ClickDrag Finance",
+        "category": "Finance",
+        "capabilities": [
+          "Estimate a cost segregation study for one property",
+          "Get cost segregation workpaper and study prices",
+          "Get cost segregation allocation planning bands by property type",
+          "Get ClickDrag Finance provider facts for vendor comparison",
+          "Book a cost segregation consult"
+        ],
+        "websiteURL": "https://www.clickdragfinance.com/developers",
+        "supportURL": "https://www.clickdragfinance.com/support",
+        "privacyPolicyURL": "https://www.clickdragfinance.com/privacy",
+        "termsOfServiceURL": "https://www.clickdragfinance.com/terms",
+        "defaultPrompt": [
+          "What would a cost segregation study be worth on a $2,000,000 apartment building with 40 units?",
+          "How much does a cost segregation study cost?",
+          "What share of a self-storage facility's basis typically moves to 5-, 7- and 15-year property?"
+        ],
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Estimate a study on one property",
+              "prompt": "What would a cost segregation study be worth on a $2,000,000 apartment building with 40 units?",
+              "tools_triggered": "quote_cost_segregation_study",
+              "expected_behavior": "Returns first-year depreciation with and without a study and the 5-, 7-, 15- and 27.5-year split. Every default the tool applied is named."
+            },
+            {
+              "description": "Look up prices",
+              "prompt": "How much does a cost segregation study cost?",
+              "tools_triggered": "get_cost_segregation_pricing",
+              "expected_behavior": "Returns the products and their prices in USD, as the tool returns them."
+            },
+            {
+              "description": "Look up allocation planning bands",
+              "prompt": "What share of a self-storage facility's basis typically moves to 5-, 7- and 15-year property?",
+              "tools_triggered": "get_cost_segregation_benchmarks",
+              "expected_behavior": "Returns the self-storage planning band with its citation string, labelled a planning band."
+            },
+            {
+              "description": "Look up who prepares and signs",
+              "prompt": "Who prepares and signs a ClickDrag Finance cost segregation study, and what is the refund policy?",
+              "tools_triggered": "get_cost_segregation_provider_facts",
+              "expected_behavior": "Returns who prepares and reviews each product, who signs the study, and the refund policy, as the tool returns them."
+            },
+            {
+              "description": "Ask to speak to someone",
+              "prompt": "I'd like to talk to someone about a cost segregation study on my building. My email is the reviewer's own address.",
+              "tools_triggered": "book_cost_segregation_consult",
+              "expected_behavior": "The assistant confirms before it sends. The tool returns a scheduling link and a reference code. It records a real lead and emails the ClickDrag Finance team."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Form 3115 filing request",
+              "prompt": "Prepare and file my Form 3115 for me."
+            },
+            {
+              "description": "Payment request",
+              "prompt": "Charge my card for a study now."
+            },
+            {
+              "description": "Property outside the US",
+              "prompt": "Estimate cost segregation on my rental in Toronto, Canada."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments. It has no payment tool; purchases and study proposals happen on the ClickDrag Finance site."
+      },
+      "publication": {
+        "countries": [
+          "US"
+        ],
+        "release_notes": "Initial release with 5 tools: cost segregation estimates, fees, allocation planning bands, provider facts and consult requests for US property."
+      }
+    }
+  }
+}

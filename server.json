@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.clickdragfinance/cost-segregation",
+  "title": "ClickDrag Finance — Cost Segregation",
+  "description": "Cost segregation estimates, fees, allocation planning bands and consult requests for US property.",
+  "version": "2.3.0",
+  "websiteUrl": "https://www.clickdragfinance.com/developers",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://www.clickdragfinance.com/api/mcp"
+    }
+  ]
+}
